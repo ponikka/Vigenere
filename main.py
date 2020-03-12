@@ -22,14 +22,14 @@ def get_seq_key(key, text):  # Функция по созданию строки
     return seq_key
 
 
-def create_of_num_seq(_str, dict_alphabet):  # Создание списка с записями позиций каждой буквы из входящего слова
+def create_of_num_seq(_str, dict_alphabet = dict_alphabet):  # Создание списка с записями позиций каждой буквы из входящего слова
     _list = list()
     for i in _str:
         _list.append(dict_alphabet[i])
 
     return _list
 
-def decoder(_list_of_result, dict_alphabet): # Перевод из последовательности цифр обратно в строку
+def decoder(_list_of_result, dict_alphabet=dict_alphabet): # Перевод из последовательности цифр обратно в строку
     _str = ''
     for i in _list_of_result:
         for k, v in dict_alphabet.items():
@@ -47,8 +47,8 @@ while len(key) > len(text):
 
 seq_key = get_seq_key(key=key, text=text)
 
-_list_text = create_of_num_seq(text, dict_alphabet)
-_list_seq_key = create_of_num_seq(seq_key, dict_alphabet)
+_list_text = create_of_num_seq(text)
+_list_seq_key = create_of_num_seq(seq_key)
 _list_of_result = list()
 
 for i in range(len(text)):
@@ -57,7 +57,7 @@ for i in range(len(text)):
         sum  = sum % len(alphabet)
     _list_of_result.append(sum)
 
-result = decoder(_list_of_result, dict_alphabet)
+result = decoder(_list_of_result)
 
 print()
 print(f'{text}')
